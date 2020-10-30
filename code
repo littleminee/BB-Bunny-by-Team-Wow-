@@ -1,0 +1,51 @@
+#include <Adafruit_CircuitPlayground.h>
+
+uint16_t value;
+
+void setup() {
+
+  // put your setup code here, to run once:
+
+Serial.begin(9600);
+
+
+
+  CircuitPlayground.begin();
+
+}
+
+
+
+void loop() {
+
+  // put your main code here, to run repeatedly:
+
+    CircuitPlayground.setPixelColor(0,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(1,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(2,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(3,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(4,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(5,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(6,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(7,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(8,  140, 22, 22);
+
+    CircuitPlayground.setPixelColor(9,  140, 22, 22);
+
+
+
+    value = analogRead(10);
+
+  Serial.println(value);
+
+  delay(500);
+
+}
