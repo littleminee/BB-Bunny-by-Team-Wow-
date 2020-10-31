@@ -1,0 +1,131 @@
+///////////////////////////////////////////////////////////////////////////////
+
+// Circuit Playground Tap Detect
+
+//
+
+// Author: Carter Nelson
+
+// MIT License (https://opensource.org/licenses/MIT)
+
+
+
+#include <Adafruit_CircuitPlayground.h>
+
+
+
+#define TAP_THRESHOLD       60          // Tap detect threshold
+
+
+
+bool tapDetected;
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+void tapCallback() {
+
+  tapDetected = true;
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+void setup(void) {
+
+  Serial.begin(9600);
+
+
+
+  CircuitPlayground.begin();
+
+  CircuitPlayground.setAccelRange(LIS3DH_RANGE_8_G);
+
+
+
+  CircuitPlayground.setAccelTap(2, TAP_THRESHOLD);
+
+
+
+  attachInterrupt(digitalPinToInterrupt(7), tapCallback, FALLING);
+
+
+
+  tapDetected = false;
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+void loop() {
+
+
+
+    CircuitPlayground.setPixelColor(0,  250, 100, 22);
+
+    CircuitPlayground.setPixelColor(1,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(2,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(3,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(4,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(5,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(6,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(7,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(8,   250, 100, 22);
+
+    CircuitPlayground.setPixelColor(9,   250, 100, 22);
+
+
+
+
+
+  if (tapDetected) {
+
+    Serial.println("TAP!");
+
+    tapDetected = false;
+
+    CircuitPlayground.setPixelColor(0,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(1,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(2,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(3,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(4,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(5,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(6,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(7,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(8,  0, 0, 0);
+
+    CircuitPlayground.setPixelColor(9,  0, 0, 0);
+
+    delay(100000);
+
+
+
+
+
+  }
+
+
+
+
+
+}
